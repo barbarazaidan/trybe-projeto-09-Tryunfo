@@ -1,0 +1,8 @@
+.cartForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartForm textarea {
+  resize: none;
+}
