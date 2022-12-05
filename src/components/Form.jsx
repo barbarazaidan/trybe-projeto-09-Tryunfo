@@ -9,7 +9,7 @@ class Form extends React.Component {
       cardAttr1, cardAttr2, cardAttr3,
       cardImage,
       cardRare,
-      cardTrunfo, hasTrunfo,
+      cardTrunfo, // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange, onSaveButtonClick,
     } = this.props;
@@ -129,10 +129,16 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.callback.isRequired,
-  onSaveButtonClick: PropTypes.callback.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool,
+  onInputChange: PropTypes.func,
+  onSaveButtonClick: PropTypes.func,
+};
+
+Form.defaultProps = {
+  isSaveButtonDisabled: true,
+  onInputChange: PropTypes.func,
+  onSaveButtonClick: PropTypes.func,
 };
 
 export default Form;
