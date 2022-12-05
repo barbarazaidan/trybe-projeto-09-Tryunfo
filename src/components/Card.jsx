@@ -2,6 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends React.Component {
+  constructor() {
+    super();
+    this.isTrunfo = this.isTrunfo.bind(this);
+  }
+
+  isTrunfo(cardTrunfo) {
+    if (cardTrunfo) {
+      return <p data-testid="trunfo-card">Super Trunfo</p>;
+    } return <p />;
+  }
+
   render() {
     const {
       cardName,
@@ -13,8 +24,20 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo,
     } = this.props;
+
     return (
-      <div>ola!</div>
+      <section>
+        <h1 data-testid="name-card">{ cardName }</h1>
+        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
+        <p data-testid="description-card">{ cardDescription }</p>
+        <ul>
+          <li data-testid="attr1-card">{ cardAttr1 }</li>
+          <li data-testid="attr2-card">{ cardAttr2 }</li>
+          <li data-testid="attr3-card">{ cardAttr3 }</li>
+        </ul>
+        <p data-testid="rare-card">{ cardRare }</p>
+        {this.isTrunfo(cardTrunfo)}
+      </section>
     );
   }
 }
