@@ -135,6 +135,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      cardsSaved,
     } = this.state;
 
     // NÃO ESTÁ LENDO A FUNÇÃO this.buttonDisabled;
@@ -208,6 +209,23 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+
+        <ul>
+          {cardsSaved.map((card) => ( // apesar de ter várias linhas, este é um retorno implícito, pois tudo cabe em uma única linha, se eu quiser
+            <li key={ card.cardName }>
+              <Card
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
