@@ -13,6 +13,7 @@ class Form extends React.Component {
       isSaveButtonDisabled,
       onInputChange, onSaveButtonClick,
     } = this.props;
+
     return (
       <form className="cardForm">
         <label htmlFor="cardName">
@@ -136,6 +137,14 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
+  // cardName: '',
+  // cardDescription: '',
+  // cardAttr1: '',
+  // cardAttr2: '',
+  // cardAttr3: '',
+  // cardImage: '',
+  // cardRare: '',
+  // cardTrunfo: false,
   isSaveButtonDisabled: true,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
