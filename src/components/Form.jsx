@@ -2,6 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
+  constructor() {
+    super();
+    this.isTrunfo = this.isTrunfo.bind(this);
+  }
+
+  isTrunfo(hasTrunfo, cardTrunfo, onInputChange) {
+    // console.log(hasTrunfo);
+    if (hasTrunfo === false) {
+      return (
+        <label htmlFor="cardTrunfo">
+          Super Trunfo
+          <input
+            type="checkbox"
+            name="cardTrunfo"
+            data-testid="trunfo-input"
+            checked={ cardTrunfo } // no React, o value do checkbox fica no atributo checked e não no próprio value
+            onChange={ onInputChange }
+          />
+        </label>
+      );
+    } return <p>Você já tem um Super Trunfo em seu baralho</p>;
+  }
+
   render() {
     const {
       cardName,
@@ -9,13 +32,13 @@ class Form extends React.Component {
       cardAttr1, cardAttr2, cardAttr3,
       cardImage,
       cardRare,
-      cardTrunfo, // hasTrunfo,
+      cardTrunfo, hasTrunfo,
       isSaveButtonDisabled,
       onInputChange, onSaveButtonClick,
     } = this.props;
 
     // console.log(isSaveButtonDisabled)
-    // console.log(onInputChange)
+    // console.log('hastrunfoform: ', hasTrunfo);
 
     return (
       <form className="cardForm">
@@ -100,16 +123,7 @@ class Form extends React.Component {
           </select>
         </label>
 
-        <label htmlFor="cardTrunfo">
-          Super Trunfo
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo } // no React, o value do checkbox fica no atributo checked e não no próprio value
-            onChange={ onInputChange }
-          />
-        </label>
+        { this.isTrunfo(hasTrunfo, cardTrunfo, onInputChange) }
 
         <button
           type="button"
@@ -133,7 +147,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,

@@ -22,14 +22,16 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      hasTrunfo: false,
       cardsSaved: [],
     };
   }
 
   onInputChange(event) {
-    // console.log(event.target.value)
-    const { target: { value, name } } = event;
+    // console.log(event.target);
+    const { target, target: { name } } = event;
     // this.setState({ name: value }); // se coloco sem colchetes, o nome da chave passa a ser 'name'
+    const value = target.type === 'checkbox' ? target.checked : target.value; // se eu não usar esta expressão, ele pega o valor do checkbox, mas como on e não true ou false.
     this.setState({ [name]: value });
   }
 
@@ -40,7 +42,7 @@ class App extends React.Component {
       cardAttr1, cardAttr2, cardAttr3,
       cardImage,
       cardRare,
-      // cardTrunfo,
+      cardTrunfo,
     } = this.state;
 
     const savedCard = {
@@ -51,9 +53,15 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     };
 
     // o spred (...) faz com que eu pegue os elementos(objetos) que já estavam no array cardsSaved e os espalhe no novo array que estou criando, depois coloco a vírgula e adiciono o novo elemento(objeto) que quero incluir no array.
+
+    if (cardTrunfo) {
+      this.setState({ hasTrunfo: true });
+    }
+
     this.setState(
       (previousState) => ({ cardsSaved: [...previousState.cardsSaved, savedCard] }),
     );
@@ -126,8 +134,8 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
     } = this.state;
-    // console.log(cardName)
 
     // NÃO ESTÁ LENDO A FUNÇÃO this.buttonDisabled;
     // if (isSaveButtonDisabled === true) {
@@ -187,6 +195,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
 
         <Card
