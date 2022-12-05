@@ -8,6 +8,7 @@ class App extends React.Component {
     super();
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     // this.inputSize = this.inputSize.bind(this);
     // this.attributeValidation = this.attributeValidation.bind(this);
     // this.buttonDisabled = this.buttonDisabled.bind(this);
@@ -15,12 +16,13 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      cardsSaved: [],
     };
   }
 
@@ -31,8 +33,44 @@ class App extends React.Component {
     this.setState({ [name]: value });
   }
 
-  // -----------------------------------------------------------------------------------------------------------------
+  onSaveButtonClick() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1, cardAttr2, cardAttr3,
+      cardImage,
+      cardRare,
+      // cardTrunfo,
+    } = this.state;
 
+    const savedCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    };
+
+    // o spred (...) faz com que eu pegue os elementos(objetos) que já estavam no array cardsSaved e os espalhe no novo array que estou criando, depois coloco a vírgula e adiciono o novo elemento(objeto) que quero incluir no array.
+    this.setState(
+      (previousState) => ({ cardsSaved: [...previousState.cardsSaved, savedCard] }),
+    );
+
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+    });
+  }
+
+  // -----------------------------------------------------------------------------------------------------------------
+  // NÃO ENTENDI PORQUE ESSAS FUNÇÕES NÃO FUNCIONARAM
   // attributeValidation() {
   //   let disableButton = true;
   //   console.log('disabe: ', disableButton)
@@ -148,6 +186,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
 
         <Card
