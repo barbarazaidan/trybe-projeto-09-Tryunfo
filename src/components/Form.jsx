@@ -14,6 +14,9 @@ class Form extends React.Component {
       onInputChange, onSaveButtonClick,
     } = this.props;
 
+    // console.log(isSaveButtonDisabled)
+    // console.log(onInputChange)
+
     return (
       <form className="cardForm">
         <label htmlFor="cardName">
@@ -131,7 +134,7 @@ Form.propTypes = {
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   // hasTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
 };
@@ -145,7 +148,6 @@ Form.defaultProps = {
   // cardImage: '',
   // cardRare: '',
   // cardTrunfo: false,
-  isSaveButtonDisabled: true,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
 };
