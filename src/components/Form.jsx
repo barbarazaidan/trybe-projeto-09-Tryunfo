@@ -8,7 +8,6 @@ class Form extends React.Component {
   }
 
   isTrunfo(hasTrunfo, cardTrunfo, onInputChange) {
-    // console.log(hasTrunfo);
     if (hasTrunfo === false) {
       return (
         <label htmlFor="cardTrunfo">
@@ -154,14 +153,6 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  // cardName: '',
-  // cardDescription: '',
-  // cardAttr1: '',
-  // cardAttr2: '',
-  // cardAttr3: '',
-  // cardImage: '',
-  // cardRare: '',
-  // cardTrunfo: false,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
 };

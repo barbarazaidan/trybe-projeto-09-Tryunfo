@@ -9,6 +9,7 @@ class App extends React.Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.deleteSaveCard = this.deleteSaveCard.bind(this);
     // this.inputSize = this.inputSize.bind(this);
     // this.attributeValidation = this.attributeValidation.bind(this);
     // this.buttonDisabled = this.buttonDisabled.bind(this);
@@ -77,6 +78,21 @@ class App extends React.Component {
     });
   }
 
+  deleteSaveCard(card) {
+    console.log('console do botão excluir: ', card);
+    this.setState((previousState) => (
+      { cardsSaved: previousState.cardsSaved.filter(({ cardName }) => cardName !== card) }
+    ));
+
+    // const { cardsSaved } = this.state;
+    // console.log('estado ao clicar no botão excluir: ', cardsSaved);
+    // const findCard = cardsSaved.find((card) => card.cardTrunfo === true);
+    // console.log('findCard: ', findCard)
+    // if (findCard === undefined) {
+    //   this.setState({ hasTrunfo: false })
+    // }
+  }
+
   // -----------------------------------------------------------------------------------------------------------------
   // NÃO ENTENDI PORQUE ESSAS FUNÇÕES NÃO FUNCIONARAM
   // attributeValidation() {
@@ -122,9 +138,6 @@ class App extends React.Component {
 
   // ----------------------------------------------------------------------------------------------------------------
 
-  // hasTrunfo,
-  //  onSaveButtonClick,
-
   render() {
     // console.log(this.state)
     const {
@@ -157,29 +170,24 @@ class App extends React.Component {
       isSaveButtonDisabled = true;
     }
 
-    // console.log('able/disable1: ', isSaveButtonDisabled)
-
     if (isSaveButtonDisabled === false) {
-      if ((+cardAttr1 + +cardAttr2 + +cardAttr3) <= maxTotalAtt) {
+      if ((+cardAttr1 + +cardAttr2 + +cardAttr3) <= maxTotalAtt
+        && (+cardAttr1 >= 0 && +cardAttr1 <= maxAtt
+        && +cardAttr2 >= 0 && +cardAttr2 <= maxAtt
+        && +cardAttr3 >= 0 && +cardAttr3 <= maxAtt)) {
         isSaveButtonDisabled = false;
       } else {
         isSaveButtonDisabled = true;
       }
     }
 
-    // console.log('able/disable2: ', isSaveButtonDisabled)
-
-    if (isSaveButtonDisabled === false) {
-      if (+cardAttr1 >= 0 && +cardAttr1 <= maxAtt
-         && +cardAttr2 >= 0 && +cardAttr2 <= maxAtt
-         && +cardAttr3 >= 0 && +cardAttr3 <= maxAtt) {
-        isSaveButtonDisabled = false;
-      } else {
-        isSaveButtonDisabled = true;
+    if (hasTrunfo) {
+      const findCard = cardsSaved.find((card) => card.cardTrunfo === true);
+      console.log('findCard: ', findCard);
+      if (findCard === undefined) {
+        this.setState({ hasTrunfo: false, cardTrunfo: false });
       }
     }
-
-    // console.log('able/disable3: ', isSaveButtonDisabled)
 
     return (
       <div>
@@ -223,6 +231,13 @@ class App extends React.Component {
                 cardRare={ card.cardRare }
                 cardTrunfo={ card.cardTrunfo }
               />
+              <button
+                type="button"
+                data-testid="delete-button"
+                onClick={ () => this.deleteSaveCard(card.cardName) }
+              >
+                Excluir
+              </button>
             </li>
           ))}
         </ul>
