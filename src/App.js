@@ -10,9 +10,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.deleteSaveCard = this.deleteSaveCard.bind(this);
-    // this.inputSize = this.inputSize.bind(this);
-    // this.attributeValidation = this.attributeValidation.bind(this);
-    // this.buttonDisabled = this.buttonDisabled.bind(this);
+    this.validationInput = this.validationInput.bind(this);
 
     this.state = {
       cardName: '',
@@ -25,16 +23,17 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       cardsSaved: [],
+      isSaveButtonDisabled: true,
     };
   }
 
   onInputChange(event) {
-    // console.log(event.target);
     const { target, target: { name } } = event;
     // this.setState({ name: value }); // se coloco sem colchetes, o nome da chave passa a ser 'name
 
     const value = target.type === 'checkbox' ? target.checked : target.value; // se eu não usar esta expressão, ele pega o valor do checkbox, mas como on e não true ou false.
-    this.setState({ [name]: value });
+
+    this.setState({ [name]: value }, this.validationInput);
   }
 
   onSaveButtonClick() {
@@ -79,6 +78,42 @@ class App extends React.Component {
     });
   }
 
+  validationInput() {
+    let buttonDisabled = true;
+    const maxAtt = 90;
+    const maxTotalAtt = 210;
+
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1, cardAttr2, cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+
+    if (cardName.length > 0
+      && cardDescription.length > 0
+      && cardImage.length > 0
+      && cardRare.length > 0) {
+      buttonDisabled = false;
+    } else {
+      buttonDisabled = true;
+    }
+
+    if (buttonDisabled === false) {
+      if ((+cardAttr1 + +cardAttr2 + +cardAttr3) <= maxTotalAtt
+        && (+cardAttr1 >= 0 && +cardAttr1 <= maxAtt
+        && +cardAttr2 >= 0 && +cardAttr2 <= maxAtt
+        && +cardAttr3 >= 0 && +cardAttr3 <= maxAtt)) {
+        buttonDisabled = false;
+      } else {
+        buttonDisabled = true;
+      }
+    }
+
+    this.setState({ isSaveButtonDisabled: buttonDisabled });
+  }
+
   deleteSaveCard(card) {
     // console.log('console do botão excluir: ', card);
     const { cardsSaved, hasTrunfo } = this.state;
@@ -107,32 +142,36 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       cardsSaved,
+      isSaveButtonDisabled,
     } = this.state;
 
-    let isSaveButtonDisabled = true;
-    const maxAtt = 90;
-    const maxTotalAtt = 210;
+    // ------------------------------------------------------------------------------
+    // REFATOREI O CÓDIGO LÁ EM CIMA, DENTRO DA FUNÇÃO validationInput
+    // let isSaveButtonDisabled = true;
+    // const maxAtt = 90;
+    // const maxTotalAtt = 210;
 
-    if (cardName.length > 0
-      && cardDescription.length > 0
-      && cardImage.length > 0
-      && cardRare.length > 0) {
-      isSaveButtonDisabled = false;
-    } else {
-      isSaveButtonDisabled = true;
-    }
+    // if (cardName.length > 0
+    //   && cardDescription.length > 0
+    //   && cardImage.length > 0
+    //   && cardRare.length > 0) {
+    //   isSaveButtonDisabled = false;
+    // } else {
+    //   isSaveButtonDisabled = true;
+    // }
 
-    if (isSaveButtonDisabled === false) {
-      if ((+cardAttr1 + +cardAttr2 + +cardAttr3) <= maxTotalAtt
-        && (+cardAttr1 >= 0 && +cardAttr1 <= maxAtt
-        && +cardAttr2 >= 0 && +cardAttr2 <= maxAtt
-        && +cardAttr3 >= 0 && +cardAttr3 <= maxAtt)) {
-        isSaveButtonDisabled = false;
-      } else {
-        isSaveButtonDisabled = true;
-      }
-    }
+    // if (isSaveButtonDisabled === false) {
+    //   if ((+cardAttr1 + +cardAttr2 + +cardAttr3) <= maxTotalAtt
+    //     && (+cardAttr1 >= 0 && +cardAttr1 <= maxAtt
+    //     && +cardAttr2 >= 0 && +cardAttr2 <= maxAtt
+    //     && +cardAttr3 >= 0 && +cardAttr3 <= maxAtt)) {
+    //     isSaveButtonDisabled = false;
+    //   } else {
+    //     isSaveButtonDisabled = true;
+    //   }
+    // }
 
+    // ------------------------------------------------------------------------------
     // REFATOREI O CÓDIGO LÁ EM CIMA, DENTRO DA FUNÇÃO deleteSaveCard
     // if (hasTrunfo) {
     //   const findCard = cardsSaved.find((card) => card.cardTrunfo === true);
@@ -141,6 +180,8 @@ class App extends React.Component {
     //     this.setState({ hasTrunfo: false, cardTrunfo: false });
     //   }
     // }
+
+    // ------------------------------------------------------------------------------
 
     return (
       <div>
