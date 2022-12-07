@@ -29,6 +29,7 @@ class App extends React.Component {
       cardsFilteredName: [],
       cardsBackup: [],
       isSaveButtonDisabled: true,
+      turnOnOff: false,
     };
   }
 
@@ -43,12 +44,9 @@ class App extends React.Component {
 
   onSaveButtonClick() {
     const {
-      cardName,
-      cardDescription,
+      cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
+      cardImage, cardRare, cardTrunfo,
     } = this.state;
 
     const savedCard = {
@@ -80,6 +78,7 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
+      cardTrunfo: false,
     });
   }
 
@@ -94,11 +93,9 @@ class App extends React.Component {
     const maxTotalAtt = 210;
 
     const {
-      cardName,
-      cardDescription,
+      cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3,
-      cardImage,
-      cardRare,
+      cardImage, cardRare,
     } = this.state;
 
     if (cardName.length > 0
@@ -125,12 +122,9 @@ class App extends React.Component {
   }
 
   deleteSaveCard(card) {
-    // console.log('console do botão excluir: ', card);
     const { cardsSaved, hasTrunfo } = this.state;
     const cardDelete = cardsSaved.find(({ cardName }) => cardName === card); // pego o card que vou excluir, isto é um objeto
-    // console.log('carta deletada: ', cardDelete);
     const { cardTrunfo } = cardDelete;
-    // console.log('cardTrunfo carta deletada: ', cardTrunfo);
     this.setState((previousState) => (
       { cardsSaved: previousState.cardsSaved.filter(({ cardName }) => cardName !== card),
         hasTrunfo: cardTrunfo ? false : hasTrunfo, // se cardTrunfo da carta deletada for igual a true, eu mudo o estado hasTrunfo para false, do contrário, permanece o mesmo estado
@@ -141,10 +135,11 @@ class App extends React.Component {
 
   filterCards(event) {
     const { cardsBackup } = this.state;
-    const { value, type } = event.target;
+    const { value, type, checked } = event.target;
     let cardsFiltered;
+    let ischecked = false;
 
-    if (type !== 'select-one') {
+    if (type !== 'select-one' && type !== 'checkbox') {
       cardsFiltered = cardsBackup.filter(
         ({ cardName }) => cardName.includes(value) === true,
       );
@@ -156,12 +151,19 @@ class App extends React.Component {
       );
     }
 
-    if (value === 'todas') {
+    if ((value === 'todas') || (type === 'checkbox' && checked === true)) {
       cardsFiltered = cardsBackup;
     }
 
+    if (type === 'checkbox' && checked === true) {
+      cardsFiltered = cardsBackup.filter(
+        ({ cardTrunfo }) => cardTrunfo === true,
+      );
+      ischecked = true;
+    }
+
     this.setState(
-      { cardsFilteredName: cardsFiltered },
+      { cardsFilteredName: cardsFiltered, turnOnOff: ischecked },
       this.validationShowCards,
     );
   }
@@ -177,15 +179,11 @@ class App extends React.Component {
 
   render() {
     const {
-      cardName,
-      cardDescription,
+      cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-      hasTrunfo,
-      cardsSaved,
-      isSaveButtonDisabled,
+      cardImage, cardRare,
+      cardTrunfo, hasTrunfo,
+      cardsSaved, isSaveButtonDisabled, turnOnOff,
     } = this.state;
 
     return (
@@ -205,6 +203,7 @@ class App extends React.Component {
           onSaveButtonClick={ this.onSaveButtonClick }
           hasTrunfo={ hasTrunfo }
           filterCards={ this.filterCards }
+          turnOnOff={ turnOnOff }
         />
 
         <Card
@@ -219,9 +218,8 @@ class App extends React.Component {
         />
 
         <ul>
-          {cardsSaved.map((card) => ( // apesar de ter várias linhas, este é um retorno implícito, pois tudo cabe em uma única linha, se eu quiser
+          {cardsSaved.map((card) => (
             <li key={ card.cardName }>
-              {/* o spred abaixo faz com que todas as propriedades do objeto card sejam 'jogadas no componente Card e como as chaves e os valores possuem o mesmo nome, não dá erro na aplicação. */}
               <Card { ...card } />
               <button
                 type="button"
