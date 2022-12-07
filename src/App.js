@@ -141,10 +141,24 @@ class App extends React.Component {
 
   filterCards(event) {
     const { cardsBackup } = this.state;
-    const { value } = event.target;
-    const cardsFiltered = cardsBackup.filter(
-      ({ cardName }) => cardName.includes(value) === true,
-    );
+    const { value, type } = event.target;
+
+    let cardsFiltered;
+
+    if (type !== 'select-one') {
+      cardsFiltered = cardsBackup.filter(
+        ({ cardName }) => cardName.includes(value) === true,
+      );
+    }
+
+    if (type === 'select-one' && value !== 'todas') {
+      cardsFiltered = cardsBackup.filter(
+        ({ cardRare }) => cardRare === value,
+      );
+    } else {
+      cardsFiltered = cardsBackup;
+    }
+
     this.setState(
       { cardsFilteredName: cardsFiltered },
       this.validationShowCards,
@@ -159,8 +173,6 @@ class App extends React.Component {
       this.setState({ cardsSaved: cardsBackup });
     }
   }
-
-  // ----------------------------------------------------------------------------------------------------------------
 
   render() {
     const {
@@ -208,9 +220,8 @@ class App extends React.Component {
         <ul>
           {cardsSaved.map((card) => ( // apesar de ter várias linhas, este é um retorno implícito, pois tudo cabe em uma única linha, se eu quiser
             <li key={ card.cardName }>
-              <Card
-                { ...card } // isto faz com que todas as propriedades do objeto card sejam 'jogadas no componente Card e como as chaves e os valores possuem o mesmo nome, não dá erro na aplicação.
-              />
+              {/* o spred abaixo faz com que todas as propriedades do objeto card sejam 'jogadas no componente Card e como as chaves e os valores possuem o mesmo nome, não dá erro na aplicação. */}
+              <Card { ...card } />
               <button
                 type="button"
                 data-testid="delete-button"

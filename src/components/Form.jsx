@@ -142,6 +142,20 @@ class Form extends React.Component {
             onChange={ filterCards }
           />
         </label>
+        <label htmlFor="rareFilter">
+          Filtro por nome
+          <select
+            name="rareFilter"
+            data-testid="rare-filter"
+            defaultValue="todas"
+            onChange={ filterCards }
+          >
+            <option value="todas">Todas</option>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito raro</option>
+          </select>
+        </label>
       </form>
     );
   }
