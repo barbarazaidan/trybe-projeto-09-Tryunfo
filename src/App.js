@@ -11,6 +11,9 @@ class App extends React.Component {
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.deleteSaveCard = this.deleteSaveCard.bind(this);
     this.validationInput = this.validationInput.bind(this);
+    this.filterCards = this.filterCards.bind(this);
+    this.validationShowCards = this.validationShowCards.bind(this);
+    this.cardsBackupFunc = this.cardsBackupFunc.bind(this);
 
     this.state = {
       cardName: '',
@@ -23,6 +26,8 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       cardsSaved: [],
+      cardsFilteredName: [],
+      cardsBackup: [],
       isSaveButtonDisabled: true,
     };
   }
@@ -33,7 +38,7 @@ class App extends React.Component {
 
     const value = target.type === 'checkbox' ? target.checked : target.value; // se eu não usar esta expressão, ele pega o valor do checkbox, mas como on e não true ou false.
 
-    this.setState({ [name]: value }, this.validationInput);
+    this.setState({ [name]: value }, this.validationInput); // a callback validationInput só vai ser executada quando o setState estiver atualizado!
   }
 
   onSaveButtonClick() {
@@ -63,9 +68,9 @@ class App extends React.Component {
       this.setState({ hasTrunfo: true });
     }
 
-    this.setState(
-      (previousState) => ({ cardsSaved: [...previousState.cardsSaved, savedCard] }),
-    );
+    this.setState((previousState) => (
+      { cardsSaved: [...previousState.cardsSaved, savedCard] }
+    ), this.cardsBackupFunc);
 
     this.setState({
       cardName: '',
@@ -76,6 +81,11 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
     });
+  }
+
+  cardsBackupFunc() {
+    const { cardsSaved } = this.state;
+    this.setState({ cardsBackup: cardsSaved });
   }
 
   validationInput() {
@@ -126,13 +136,33 @@ class App extends React.Component {
         hasTrunfo: cardTrunfo ? false : hasTrunfo, // se cardTrunfo da carta deletada for igual a true, eu mudo o estado hasTrunfo para false, do contrário, permanece o mesmo estado
         cardTrunfo: cardTrunfo ? false : cardTrunfo, // ao setar o cardTrunfo, eu já deixo o checkbox desmarcado
       }
-    ));
+    ), this.cardsBackupFunc);
+  }
+
+  filterCards(event) {
+    const { cardsBackup } = this.state;
+    const { value } = event.target;
+    const cardsFiltered = cardsBackup.filter(
+      ({ cardName }) => cardName.includes(value) === true,
+    );
+    this.setState(
+      { cardsFilteredName: cardsFiltered },
+      this.validationShowCards,
+    );
+  }
+
+  validationShowCards() {
+    const { cardsFilteredName, cardsBackup } = this.state;
+    if (cardsFilteredName.length !== cardsBackup.length) {
+      this.setState({ cardsSaved: cardsFilteredName });
+    } else {
+      this.setState({ cardsSaved: cardsBackup });
+    }
   }
 
   // ----------------------------------------------------------------------------------------------------------------
 
   render() {
-    // console.log(this.state)
     const {
       cardName,
       cardDescription,
@@ -144,44 +174,6 @@ class App extends React.Component {
       cardsSaved,
       isSaveButtonDisabled,
     } = this.state;
-
-    // ------------------------------------------------------------------------------
-    // REFATOREI O CÓDIGO LÁ EM CIMA, DENTRO DA FUNÇÃO validationInput
-    // let isSaveButtonDisabled = true;
-    // const maxAtt = 90;
-    // const maxTotalAtt = 210;
-
-    // if (cardName.length > 0
-    //   && cardDescription.length > 0
-    //   && cardImage.length > 0
-    //   && cardRare.length > 0) {
-    //   isSaveButtonDisabled = false;
-    // } else {
-    //   isSaveButtonDisabled = true;
-    // }
-
-    // if (isSaveButtonDisabled === false) {
-    //   if ((+cardAttr1 + +cardAttr2 + +cardAttr3) <= maxTotalAtt
-    //     && (+cardAttr1 >= 0 && +cardAttr1 <= maxAtt
-    //     && +cardAttr2 >= 0 && +cardAttr2 <= maxAtt
-    //     && +cardAttr3 >= 0 && +cardAttr3 <= maxAtt)) {
-    //     isSaveButtonDisabled = false;
-    //   } else {
-    //     isSaveButtonDisabled = true;
-    //   }
-    // }
-
-    // ------------------------------------------------------------------------------
-    // REFATOREI O CÓDIGO LÁ EM CIMA, DENTRO DA FUNÇÃO deleteSaveCard
-    // if (hasTrunfo) {
-    //   const findCard = cardsSaved.find((card) => card.cardTrunfo === true);
-    //   console.log('findCard: ', findCard);
-    //   if (findCard === undefined) {
-    //     this.setState({ hasTrunfo: false, cardTrunfo: false });
-    //   }
-    // }
-
-    // ------------------------------------------------------------------------------
 
     return (
       <div>
@@ -199,6 +191,7 @@ class App extends React.Component {
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
           hasTrunfo={ hasTrunfo }
+          filterCards={ this.filterCards }
         />
 
         <Card
@@ -216,14 +209,6 @@ class App extends React.Component {
           {cardsSaved.map((card) => ( // apesar de ter várias linhas, este é um retorno implícito, pois tudo cabe em uma única linha, se eu quiser
             <li key={ card.cardName }>
               <Card
-                // cardName={ card.cardName }
-                // cardDescription={ card.cardDescription }
-                // cardAttr1={ card.cardAttr1 }
-                // cardAttr2={ card.cardAttr2 }
-                // cardAttr3={ card.cardAttr3 }
-                // cardImage={ card.cardImage }
-                // cardRare={ card.cardRare }
-                // cardTrunfo={ card.cardTrunfo }
                 { ...card } // isto faz com que todas as propriedades do objeto card sejam 'jogadas no componente Card e como as chaves e os valores possuem o mesmo nome, não dá erro na aplicação.
               />
               <button

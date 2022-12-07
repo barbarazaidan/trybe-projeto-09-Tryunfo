@@ -34,6 +34,7 @@ class Form extends React.Component {
       cardTrunfo, hasTrunfo,
       isSaveButtonDisabled,
       onInputChange, onSaveButtonClick,
+      filterCards,
     } = this.props;
 
     // console.log(isSaveButtonDisabled)
@@ -132,6 +133,15 @@ class Form extends React.Component {
         >
           Salvar
         </button>
+        <label htmlFor="nameFilter">
+          Filtro por nome
+          <input
+            type="text"
+            name="nameFilter"
+            data-testid="name-filter"
+            onChange={ filterCards }
+          />
+        </label>
       </form>
     );
   }
@@ -150,6 +160,7 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
+  filterCards: PropTypes.func.isRequired,
 };
 
 Form.defaultProps = {
