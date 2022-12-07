@@ -142,7 +142,6 @@ class App extends React.Component {
   filterCards(event) {
     const { cardsBackup } = this.state;
     const { value, type } = event.target;
-
     let cardsFiltered;
 
     if (type !== 'select-one') {
@@ -155,7 +154,9 @@ class App extends React.Component {
       cardsFiltered = cardsBackup.filter(
         ({ cardRare }) => cardRare === value,
       );
-    } else {
+    }
+
+    if (value === 'todas') {
       cardsFiltered = cardsBackup;
     }
 
