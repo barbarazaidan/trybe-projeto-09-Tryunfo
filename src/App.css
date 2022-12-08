@@ -1,18 +1,18 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
 h1 {
-  text-align: center;
   margin-top: 30px;
+  text-align: center;
 }
 
 .cardMontage {
-  margin-top: 30px;
   display: flex;
-  max-width:auto;
-  justify-content:space-around;
+  justify-content: space-around;
+  margin-top: 30px;
+  max-width: auto;
 }
 
 .cardForm {
@@ -29,7 +29,7 @@ h1 {
 }
 
 .input-cardName input {
-  border:none;
+  border: none;
   margin-top: 10px;
   padding: 10px;
 }
@@ -41,10 +41,10 @@ h1 {
 }
 
 .input-cardDescription textarea {
-  border:none;
+  border: none;
   margin-top: 10px;
-  resize: none;
   padding: 10px;
+  resize: none;
 }
 
 .input-cardAttr1 {
@@ -54,7 +54,7 @@ h1 {
 }
 
 .input-cardAttr1 input {
-  border:none;
+  border: none;
   margin-top: 10px;
   padding: 10px;
 }
@@ -66,7 +66,7 @@ h1 {
 }
 
 .input-cardAttr2 input {
-  border:none;
+  border: none;
   margin-top: 10px;
   padding: 10px;
 }
@@ -78,7 +78,7 @@ h1 {
 }
 
 .input-cardAttr3 input {
-  border:none;
+  border: none;
   margin-top: 10px;
   padding: 10px;
 }
@@ -90,7 +90,7 @@ h1 {
 }
 
 .input-cardImage input {
-  border:none;
+  border: none;
   margin-top: 10px;
   padding: 10px;
 }
@@ -102,8 +102,8 @@ h1 {
 }
 
 .input-cardRare select {
-  padding: 5px;
   margin-top: 10px;
+  padding: 5px;
 }
 
 .checkbox-Trunfo {
@@ -116,23 +116,23 @@ h1 {
 }
 
 .saveButton:enabled {
+  background-color: #67bba0;
   border-radius: 5px;
-  border-color: #67BBA0;
-  padding: 7px;
-  background-color: #67BBA0;
-  color: #FEEBCC;
+  border-color: #67bba0;
+  color: #feebcc;
+  cursor: pointer;
   font-weight: 900;
   font-size: medium;
-  cursor: pointer;
+  padding: 7px;
 }
 
 .saveButton:disabled {
   border-radius: 5px;
-  padding: 7px;
   background-color: white;
-  color: #67BBA0;
+  color: #67bba0;
   font-weight: 900;
   font-size: medium;
+  padding: 7px;
 }
 
 .input-nameFilter {
@@ -153,9 +153,9 @@ h1 {
 
 .input-rareFilter select {
   border: 1px solid;
+  background-color: white;
   margin-left: 10px;
   padding: 5px;
-  background-color: white;
 }
 
 .checkbox-trunfoFilter {
