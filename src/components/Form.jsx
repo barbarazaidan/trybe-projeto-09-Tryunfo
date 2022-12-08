@@ -10,7 +10,7 @@ class Form extends React.Component {
   isTrunfo(hasTrunfo, cardTrunfo, onInputChange) {
     if (hasTrunfo === false) {
       return (
-        <label htmlFor="cardTrunfo">
+        <label htmlFor="cardTrunfo" className="checkbox-Trunfo">
           Super Trunfo
           <input
             type="checkbox"
@@ -43,8 +43,9 @@ class Form extends React.Component {
 
     return (
       <form className="cardForm">
-        <label htmlFor="cardName">
-          Nome da carta
+        <h2>Adicione nova carta</h2>
+        <label htmlFor="cardName" className="input-cardName">
+          Nome da carta:
           <input
             type="text"
             name="cardName"
@@ -54,20 +55,18 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor="cardDescription">
-          Descrição
+        <label htmlFor="cardDescription" className="input-cardDescription">
+          Descrição:
           <textarea
             name="cardDescription"
-            cols="30"
-            rows="10"
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
 
-        <label htmlFor="cardAttr1">
-          Atributo 1
+        <label htmlFor="cardAttr1" className="input-cardAttr1">
+          Nota geral:
           <input
             type="number"
             name="cardAttr1"
@@ -77,8 +76,8 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor="cardAttr2">
-          Atributo 2
+        <label htmlFor="cardAttr2" className="input-cardAttr2">
+          Direção:
           <input
             type="number"
             name="cardAttr2"
@@ -88,8 +87,8 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor="cardAttr3">
-          Atributo 3
+        <label htmlFor="cardAttr3" className="input-cardAttr3">
+          Trilha sonora:
           <input
             type="number"
             name="cardAttr3"
@@ -99,7 +98,7 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor="cardImage">
+        <label htmlFor="cardImage" className="input-cardImage">
           URL da imagem
           <input
             type="text"
@@ -110,7 +109,7 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor="cardRare">
+        <label htmlFor="cardRare" className="input-cardRare">
           Raridade
           <select
             name="cardRare"
@@ -127,6 +126,7 @@ class Form extends React.Component {
         { this.isTrunfo(hasTrunfo, cardTrunfo, onInputChange) }
 
         <button
+          className="saveButton"
           type="button"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
@@ -134,8 +134,8 @@ class Form extends React.Component {
         >
           Salvar
         </button>
-        <label htmlFor="nameFilter">
-          Filtro por nome
+        <label htmlFor="nameFilter" className="input-nameFilter">
+          Filtro por nome:
           <input
             type="text"
             name="nameFilter"
@@ -144,8 +144,8 @@ class Form extends React.Component {
             onChange={ filterCards }
           />
         </label>
-        <label htmlFor="rareFilter">
-          Filtro por raridade
+        <label htmlFor="rareFilter" className="input-rareFilter">
+          Filtro por raridade:
           <select
             name="rareFilter"
             data-testid="rare-filter"
@@ -159,7 +159,7 @@ class Form extends React.Component {
             <option value="muito raro">Muito raro</option>
           </select>
         </label>
-        <label htmlFor="trunfoFilter">
+        <label htmlFor="trunfoFilter" className="checkbox-trunfoFilter">
           Filtro Super Trunfo
           <input
             type="checkbox"

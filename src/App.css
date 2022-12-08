@@ -1,8 +1,174 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.cardMontage {
+  margin-top: 30px;
+  display: flex;
+  max-width:auto;
+  justify-content:space-around;
+}
+
 .cardForm {
   display: flex;
   flex-direction: column;
+  margin-left: 100px;
+  padding: 10px;
 }
 
-.cardForm textarea {
+.input-cardName {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.input-cardName input {
+  border:none;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.input-cardDescription {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.input-cardDescription textarea {
+  border:none;
+  margin-top: 10px;
   resize: none;
+  padding: 10px;
+}
+
+.input-cardAttr1 {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.input-cardAttr1 input {
+  border:none;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.input-cardAttr2 {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.input-cardAttr2 input {
+  border:none;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.input-cardAttr3 {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.input-cardAttr3 input {
+  border:none;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.input-cardImage {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.input-cardImage input {
+  border:none;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.input-cardRare {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.input-cardRare select {
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.checkbox-Trunfo {
+  display: flex;
+  margin: 10px 0;
+}
+
+.checkbox-Trunfo input {
+  margin-left: 10px;
+}
+
+.saveButton:enabled {
+  border-radius: 5px;
+  border-color: #67BBA0;
+  padding: 7px;
+  background-color: #67BBA0;
+  color: #FEEBCC;
+  font-weight: 900;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.saveButton:disabled {
+  border-radius: 5px;
+  padding: 7px;
+  background-color: white;
+  color: #67BBA0;
+  font-weight: 900;
+  font-size: medium;
+}
+
+.input-nameFilter {
+  display: flex;
+  margin: 10px 0;
+}
+
+.input-nameFilter input {
+  border: 1px solid;
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.input-rareFilter {
+  display: flex;
+  margin: 10px 0;
+}
+
+.input-rareFilter select {
+  border: 1px solid;
+  margin-left: 10px;
+  padding: 5px;
+  background-color: white;
+}
+
+.checkbox-trunfoFilter {
+  display: flex;
+  margin: 10px 0;
+}
+
+.checkbox-trunfoFilter input {
+  margin-left: 10px;
+}
+
+.cardPreview {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
 }
