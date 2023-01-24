@@ -4,12 +4,12 @@
 }
 
 .buttonDelete {
+  background: 0;
   border: none;
   cursor: pointer;
   font-size: 17px;
   font-weight: 700;
   margin: 5px 0 0 180px;
-  background: 0;
 }
 
 .cardForm {
@@ -17,11 +17,12 @@
   color: white;
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
   margin-bottom: 50px;
+  margin-left: 100px;
   padding: 10px;
   width: 400px;
 }
+
 /* formulário da carta e da pre-visualização */
 .cardMontage {
   background-color: #9dd9d2;
@@ -34,25 +35,24 @@
 
 .cardPreview {
   align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  /* background: linear-gradient(225deg, rgba(192,55,182,0.8547794117647058) 7%, rgba(255,66,130,0.3309698879551821) 50%, rgba(63, 197, 242) 50%); */
   background: linear-gradient(227deg, rgba(57,47,90,1) 50%, rgba(244,208,111,1) 50%);
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
   height: auto;
+  width: 400px;
 }
 
-.cardSavedSection{
-  margin: 0;
+.cardSavedSection {
   background-color: #ff8811;
+  margin: 0;
 }
 
-.cardSavedLi{
+.cardSavedLi {
   margin: 20px;
 }
 
-.cardSavedUl{
+.cardSavedUl {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -87,10 +87,10 @@
   background-color: #ff8811;
   color: black;
   display: flex;
-  justify-content: space-between;
-  padding: 30px;
   font-size: 20px;
   font-weight: 600;
+  justify-content: space-between;
+  padding: 30px;
 }
 
 .filterPart {
@@ -237,10 +237,8 @@ li {
 }
 
 .previewPUl {
-  /* background: linear-gradient(205deg, rgba(192,55,182,0.8547794117647058) 7%, rgba(255,66,130,0.3309698879551821) 50%, rgba(63, 197, 242) 50%); */
-  /* background-color: rgba(96,214,255,1); */
   border: white solid;
-  margin: 10px 10px 0px 10px;
+  margin: 10px 10px 0;
   padding: 10px;
   width: 70%;
 }
@@ -271,7 +269,7 @@ li {
   padding: 7px;
 }
 
-.superiorPage{
+.superiorPage {
   background: #9dd9d2;
   padding-top: 1px;
 }
@@ -291,7 +289,7 @@ li {
   background: #392f5a;
   border: white solid;
   color: #fff8f0;
-  margin: 0px 10px 25px 10px;
+  margin: 0px 10px 25px;
   padding: 10px;
   text-align: center;
   width: 70%;
