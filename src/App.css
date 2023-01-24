@@ -3,23 +3,111 @@
   padding: 0;
 }
 
-h1 {
-  margin-top: 30px;
-  text-align: center;
+.buttonDelete {
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 5px 0 0 180px;
+  background: 0;
 }
 
+.cardForm {
+  background-color: #ff8811;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  margin-bottom: 50px;
+  padding: 10px;
+  width: 400px;
+}
+/* formulário da carta e da pre-visualização */
 .cardMontage {
+  background-color: #9dd9d2;
   display: flex;
   justify-content: space-around;
   margin-top: 30px;
   max-width: auto;
+  padding: 20px
 }
 
-.cardForm {
+.cardPreview {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
+  width: 400px;
+  /* background: linear-gradient(225deg, rgba(192,55,182,0.8547794117647058) 7%, rgba(255,66,130,0.3309698879551821) 50%, rgba(63, 197, 242) 50%); */
+  background: linear-gradient(227deg, rgba(57,47,90,1) 50%, rgba(244,208,111,1) 50%);
+  border-radius: 20px;
+  height: auto;
+}
+
+.cardSavedSection{
+  margin: 0;
+  background-color: #ff8811;
+}
+
+.cardSavedLi{
+  margin: 20px;
+}
+
+.cardSavedUl{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.checkbox-Trunfo {
+  display: flex;
+  margin: 10px 0;
+}
+
+.checkbox-Trunfo input {
+  margin-left: 10px;
+}
+
+.checkbox-trunfoFilter {
+  display: flex;
+  margin: 10px 0;
+}
+
+.checkbox-trunfoFilter input {
+  margin-left: 10px;
+}
+
+.descriptionCard {
+  margin: 10px;
   padding: 10px;
+  text-align: justify;
+  word-break: break-word;
+}
+
+.filterDiv {
+  background-color: #ff8811;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.filterPart {
+  border: solid #392f5a;
+}
+
+.gradesUl {
+  margin: 10px 10px 0 0;
+  padding: 10px;
+  width: 65%;
+}
+
+.imageCard {
+  border: white solid;
+  color: #fff8f0;
+  height: 168px;
+  width: 75%;
 }
 
 .input-cardName {
@@ -106,35 +194,6 @@ h1 {
   padding: 5px;
 }
 
-.checkbox-Trunfo {
-  display: flex;
-  margin: 10px 0;
-}
-
-.checkbox-Trunfo input {
-  margin-left: 10px;
-}
-
-.saveButton:enabled {
-  background-color: #67bba0;
-  border-color: #67bba0;
-  border-radius: 5px;
-  color: #feebcc;
-  cursor: pointer;
-  font-size: medium;
-  font-weight: 900;
-  padding: 7px;
-}
-
-.saveButton:disabled {
-  background-color: white;
-  border-radius: 5px;
-  color: #67bba0;
-  font-size: medium;
-  font-weight: 900;
-  padding: 7px;
-}
-
 .input-nameFilter {
   display: flex;
   margin: 10px 0;
@@ -158,17 +217,82 @@ h1 {
   padding: 5px;
 }
 
-.checkbox-trunfoFilter {
-  display: flex;
-  margin: 10px 0;
+li {
+  list-style:none;
 }
 
-.checkbox-trunfoFilter input {
-  margin-left: 10px;
+.nameCard {
+  color: #fff8f0;
+  font-size: 25px;
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  width: 300px;
 }
 
-.cardPreview {
+.preview {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
+  align-items: center;
+}
+
+.previewPUl {
+  /* background: linear-gradient(205deg, rgba(192,55,182,0.8547794117647058) 7%, rgba(255,66,130,0.3309698879551821) 50%, rgba(63, 197, 242) 50%); */
+  /* background-color: rgba(96,214,255,1); */
+  border: white solid;
+  margin: 10px 10px 0px 10px;
+  padding: 10px;
+  width: 70%;
+}
+
+.previewTitulo {
+  color: #fff8f0;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.saveButton:enabled {
+  background-color:  #f4d06f;
+  border-radius: 5px;
+  border: 0;
+  color: #392f5a;
+  cursor: pointer;
+  font-size: medium;
+  font-weight: 900;
+  padding: 7px;
+}
+
+.saveButton:disabled {
+  background-color: white;
+  border-radius: 5px;
+  color: #392f5a;
+  font-size: medium;
+  font-weight: 900;
+  padding: 7px;
+}
+
+.superiorPage{
+  background: #9dd9d2;
+  padding-top: 1px;
+}
+
+.tryunfo {
+  color: #392f5a;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 50px;
+  font-style: oblique;
+  font-weight: 1000;
+  margin-top: 100px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.typeRare {
+  background: #392f5a;
+  border: white solid;
+  color: #fff8f0;
+  margin: 0px 10px 25px 10px;
+  padding: 10px;
+  text-align: center;
+  width: 70%;
 }

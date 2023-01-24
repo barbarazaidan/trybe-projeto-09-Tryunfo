@@ -27,15 +27,27 @@ class Card extends React.Component {
 
     return (
       <section className="cardPreview">
-        <h1 data-testid="name-card">{ cardName }</h1>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <p data-testid="description-card">{ cardDescription }</p>
-        <ul>
-          <li data-testid="attr1-card">{ cardAttr1 }</li>
-          <li data-testid="attr2-card">{ cardAttr2 }</li>
-          <li data-testid="attr3-card">{ cardAttr3 }</li>
-        </ul>
-        <p data-testid="rare-card">{ cardRare }</p>
+        <h1 data-testid="name-card" className="nameCard">{ cardName }</h1>
+        <img
+          data-testid="image-card"
+          src={ cardImage }
+          alt={ cardName }
+          className="imageCard"
+        />
+        <div className="previewPUl">
+          <p
+            data-testid="description-card"
+            className="descriptionCard"
+          >
+            { cardDescription }
+          </p>
+          <ul className="gradesUl">
+            <li data-testid="attr1-card">{ cardAttr1 }</li>
+            <li data-testid="attr2-card">{ cardAttr2 }</li>
+            <li data-testid="attr3-card">{ cardAttr3 }</li>
+          </ul>
+        </div>
+        <p data-testid="rare-card" className="typeRare">{ cardRare }</p>
         {this.isTrunfo(cardTrunfo)}
       </section>
     );

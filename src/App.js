@@ -1,12 +1,12 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import FormFilter from './components/FormFilter';
 import './App.css';
 
 class App extends React.Component {
   constructor() {
     super();
-
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.deleteSaveCard = this.deleteSaveCard.bind(this);
@@ -36,9 +36,7 @@ class App extends React.Component {
   onInputChange(event) {
     const { target, target: { name } } = event;
     // this.setState({ name: value }); // se coloco sem colchetes, o nome da chave passa a ser 'name
-
     const value = target.type === 'checkbox' ? target.checked : target.value; // se eu não usar esta expressão, ele pega o valor do checkbox, mas como on e não true ou false.
-
     this.setState({ [name]: value }, this.validationInput); // a callback validationInput só vai ser executada quando o setState estiver atualizado!
   }
 
@@ -137,12 +135,13 @@ class App extends React.Component {
   filterCards(event) {
     const { cardsBackup } = this.state;
     const { value, type, checked } = event.target;
+    console.log(checked);
     let cardsFiltered;
-    let ischecked = false;
+    let ischecked;
 
     if (type !== 'select-one' && type !== 'checkbox') {
       cardsFiltered = cardsBackup.filter(
-        ({ cardName }) => cardName.includes(value) === true,
+        ({ cardName }) => cardName.toLowerCase().includes(value.toLowerCase()) === true,
       );
     }
 
@@ -152,7 +151,7 @@ class App extends React.Component {
       );
     }
 
-    if ((value === 'todas') || (type === 'checkbox' && checked === true)) {
+    if (value === 'todas') {
       cardsFiltered = cardsBackup;
     }
 
@@ -163,6 +162,11 @@ class App extends React.Component {
       ischecked = true;
     }
 
+    if (type === 'checkbox' && checked !== true) {
+      cardsFiltered = cardsBackup;
+      ischecked = false;
+    }
+
     this.setState(
       { cardsFilteredName: cardsFiltered, turnOnOff: ischecked },
       this.validationShowCards,
@@ -171,6 +175,7 @@ class App extends React.Component {
 
   validationShowCards() {
     const { cardsFilteredName, cardsBackup } = this.state;
+    console.log('cardsBackup', cardsBackup, 'cardsFilteredName', cardsFilteredName);
     if (cardsFilteredName.length !== cardsBackup.length) {
       this.setState({ cardsSaved: cardsFilteredName });
     } else {
@@ -188,10 +193,11 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div>
-        <h1>Tryunfo</h1>
-        <section className="cardMontage">
-          <Form
+      <div className="paginaInteira">
+        <div className="superiorPage">
+          <h1 className="tryunfo">Tryunfo</h1>
+          <section className="cardMontage">
+            {/* <Form
             onInputChange={ this.onInputChange }
             cardName={ cardName }
             cardDescription={ cardDescription }
@@ -206,35 +212,56 @@ class App extends React.Component {
             hasTrunfo={ hasTrunfo }
             filterCards={ this.filterCards }
             turnOnOff={ turnOnOff }
-          />
-
-          <h2 className="preview">Pré-visualização</h2>
-          <Card
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-          />
+          /> */}
+            <Form
+              onInputChange={ this.onInputChange }
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onSaveButtonClick={ this.onSaveButtonClick }
+              hasTrunfo={ hasTrunfo }
+            />
+            <section className="preview">
+              <h2 className="previewTitulo">Pré-visualização</h2>
+              <Card
+                cardName={ cardName }
+                cardDescription={ cardDescription }
+                cardAttr1={ cardAttr1 }
+                cardAttr2={ cardAttr2 }
+                cardAttr3={ cardAttr3 }
+                cardImage={ cardImage }
+                cardRare={ cardRare }
+                cardTrunfo={ cardTrunfo }
+              />
+            </section>
+          </section>
+        </div>
+        <section className="filterPart">
+          <FormFilter filterCards={ this.filterCards } turnOnOff={ turnOnOff } />
         </section>
-
-        <ul>
-          {cardsSaved.map((card) => (
-            <li key={ card.cardName }>
-              <Card { ...card } />
-              <button
-                type="button"
-                data-testid="delete-button"
-                onClick={ () => this.deleteSaveCard(card.cardName) }
-              >
-                Excluir
-              </button>
-            </li>
-          ))}
-        </ul>
+        <section className="cardSavedSection">
+          <ul className="cardSavedUl">
+            {cardsSaved.map((card) => (
+              <li key={ card.cardName } className="cardSavedLi">
+                <Card { ...card } />
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ () => this.deleteSaveCard(card.cardName) }
+                  className="buttonDelete"
+                >
+                  Excluir
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     );
   }
