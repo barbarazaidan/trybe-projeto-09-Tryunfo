@@ -36,7 +36,9 @@
 .cardPreview {
   align-items: center;
   background: linear-gradient(
-    227deg, rgba(57, 47, 90, 1) 50%, rgba(244, 208, 111, 1) 50%
+    227deg,
+    rgba(57, 47, 90, 1) 50%,
+    rgba(244, 208, 111, 1) 50%,
   );
   border-radius: 20px;
   display: flex;
@@ -278,7 +280,7 @@ li {
 
 .tryunfo {
   color: #392f5a;
-  font-family: 'Franklin Gothic Medium' , 'Arial Narrow' , Arial , sans-serif;
+  font-family: Franklin Gothic Medium , Arial Narrow , Arial , sans-serif;
   font-size: 50px;
   font-style: oblique;
   font-weight: 1000;
