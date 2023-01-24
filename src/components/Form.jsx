@@ -34,8 +34,6 @@ class Form extends React.Component {
       cardTrunfo, hasTrunfo,
       isSaveButtonDisabled,
       onInputChange, onSaveButtonClick,
-      filterCards,
-      turnOnOff,
     } = this.props;
 
     // console.log(isSaveButtonDisabled)
@@ -134,42 +132,6 @@ class Form extends React.Component {
         >
           Salvar
         </button>
-        {/* <div className="filterDiv">
-          <label htmlFor="nameFilter" className="input-nameFilter">
-            Filtro por nome:
-            <input
-              type="text"
-              name="nameFilter"
-              data-testid="name-filter"
-              disabled={ turnOnOff }
-              onChange={ filterCards }
-            />
-          </label>
-          <label htmlFor="rareFilter" className="input-rareFilter">
-            Filtro por raridade:
-            <select
-              name="rareFilter"
-              data-testid="rare-filter"
-              defaultValue="todas"
-              disabled={ turnOnOff }
-              onChange={ filterCards }
-            >
-              <option value="todas">Todas</option>
-              <option value="normal">Normal</option>
-              <option value="raro">Raro</option>
-              <option value="muito raro">Muito raro</option>
-            </select>
-          </label>
-          <label htmlFor="trunfoFilter" className="checkbox-trunfoFilter">
-            Filtro Super Trunfo
-            <input
-              type="checkbox"
-              name="trunfoFilter"
-              data-testid="trunfo-filter"
-              onChange={ filterCards }
-            />
-          </label>
-        </div> */}
       </form>
     );
   }
@@ -188,14 +150,11 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
-  // filterCards: PropTypes.func.isRequired,
-  turnOnOff: PropTypes.bool,
 };
 
 Form.defaultProps = {
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
-  turnOnOff: false,
 };
 
 export default Form;

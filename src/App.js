@@ -4,7 +4,7 @@ import Card from './components/Card';
 import FormFilter from './components/FormFilter';
 import './App.css';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor() {
     super();
     this.onInputChange = this.onInputChange.bind(this);
@@ -42,8 +42,7 @@ class App extends React.Component {
 
   onSaveButtonClick() {
     const {
-      cardName, cardDescription,
-      cardAttr1, cardAttr2, cardAttr3,
+      cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
       cardImage, cardRare, cardTrunfo,
     } = this.state;
 
@@ -135,7 +134,7 @@ class App extends React.Component {
   filterCards(event) {
     const { cardsBackup } = this.state;
     const { value, type, checked } = event.target;
-    console.log(checked);
+    // console.log(checked);
     let cardsFiltered;
     let ischecked;
 
@@ -187,8 +186,7 @@ class App extends React.Component {
     const {
       cardName, cardDescription,
       cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare,
-      cardTrunfo, hasTrunfo,
+      cardImage, cardRare, cardTrunfo, hasTrunfo,
       cardsSaved, isSaveButtonDisabled, turnOnOff,
     } = this.state;
 
@@ -197,22 +195,6 @@ class App extends React.Component {
         <div className="superiorPage">
           <h1 className="tryunfo">Tryunfo</h1>
           <section className="cardMontage">
-            {/* <Form
-            onInputChange={ this.onInputChange }
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-            isSaveButtonDisabled={ isSaveButtonDisabled }
-            onSaveButtonClick={ this.onSaveButtonClick }
-            hasTrunfo={ hasTrunfo }
-            filterCards={ this.filterCards }
-            turnOnOff={ turnOnOff }
-          /> */}
             <Form
               onInputChange={ this.onInputChange }
               cardName={ cardName }
@@ -266,5 +248,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
