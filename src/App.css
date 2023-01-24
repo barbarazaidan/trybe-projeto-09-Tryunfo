@@ -13,7 +13,7 @@
 }
 
 .cardForm {
-  background-color: #ff8811;
+  background-color: #f81;
   color: white;
   display: flex;
   flex-direction: column;
@@ -30,12 +30,12 @@
   justify-content: space-around;
   margin-top: 30px;
   max-width: auto;
-  padding: 20px
+  padding: 20px;
 }
 
 .cardPreview {
   align-items: center;
-  background: linear-gradient(227deg, rgba(57,47,90,1) 50%, rgba(244,208,111,1) 50%);
+  background: linear-gradient(227deg, rgba(57, 47, 90, 1) 50%, rgba(244, 208, 111, 1) 50%);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@
 }
 
 .cardSavedSection {
-  background-color: #ff8811;
+  background-color: #f81;
   margin: 0;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .filterDiv {
-  background-color: #ff8811;
+  background-color: #f81;
   color: black;
   display: flex;
   font-size: 20px;
@@ -218,7 +218,7 @@
 }
 
 li {
-  list-style:none;
+  list-style: none;
 }
 
 .nameCard {
@@ -231,9 +231,9 @@ li {
 }
 
 .preview {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .previewPUl {
@@ -245,14 +245,14 @@ li {
 
 .previewTitulo {
   color: #fff8f0;
-  margin-bottom: 20px;
   font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .saveButton:enabled {
-  background-color:  #f4d06f;
-  border-radius: 5px;
+  background-color: #f4d06f;
   border: 0;
+  border-radius: 5px;
   color: #392f5a;
   cursor: pointer;
   font-size: medium;
@@ -276,7 +276,7 @@ li {
 
 .tryunfo {
   color: #392f5a;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 50px;
   font-style: oblique;
   font-weight: 1000;
@@ -289,7 +289,7 @@ li {
   background: #392f5a;
   border: white solid;
   color: #fff8f0;
-  margin: 0px 10px 25px;
+  margin: 0 10px 25px;
   padding: 10px;
   text-align: center;
   width: 70%;
