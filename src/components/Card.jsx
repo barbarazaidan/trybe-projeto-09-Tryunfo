@@ -10,7 +10,7 @@ class Card extends React.Component {
   isTrunfo(cardTrunfo) {
     if (cardTrunfo) {
       return (<p data-testid="trunfo-card" className="superTrunfo">Super Trunfo</p>);
-    } return (<p className="superTrunfoNao">Super Trinfo</p>);
+    } return (<p className="superTrunfoNao"> </p>);
   }
 
   render() {
