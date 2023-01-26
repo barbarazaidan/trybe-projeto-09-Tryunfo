@@ -35,8 +35,8 @@
 
 .cardPreview {
   align-items: center;
-  background: linear-gradient
-    (227deg , rgba(57, 47, 90, 1) 50% , rgba(244, 208, 111, 1) 50%);
+  background: linear-gradient(227deg , rgba(57, 47, 90, 1) 50% , rgba(244, 208, 111, 1) 50%);
+  border: solid rgb(57, 47, 90);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
