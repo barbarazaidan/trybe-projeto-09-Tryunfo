@@ -38,6 +38,7 @@ class Form extends React.Component {
 
     // console.log(isSaveButtonDisabled)
     // console.log('hastrunfoform: ', hasTrunfo);
+    console.log('cardRare', cardRare);
 
     return (
       <form className="cardForm">
