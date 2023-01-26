@@ -9,8 +9,8 @@ class Card extends React.Component {
 
   isTrunfo(cardTrunfo) {
     if (cardTrunfo) {
-      return (<p data-testid="trunfo-card">Super Trunfo</p>);
-    } return (<p />);
+      return (<p data-testid="trunfo-card" className="superTrunfo">Super Trunfo</p>);
+    } return (<p className="superTrunfoNao">Super Trinfo</p>);
   }
 
   render() {
@@ -46,9 +46,9 @@ class Card extends React.Component {
             <li data-testid="attr2-card">{ cardAttr2 }</li>
             <li data-testid="attr3-card">{ cardAttr3 }</li>
           </ul>
+          {this.isTrunfo(cardTrunfo)}
         </div>
         <p data-testid="rare-card" className="typeRare">{ cardRare }</p>
-        {this.isTrunfo(cardTrunfo)}
       </section>
     );
   }
