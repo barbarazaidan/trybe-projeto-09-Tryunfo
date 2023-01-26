@@ -35,11 +35,10 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 
 5. Faça a validação do botão de Salvar no formulário
 
-> O botão que possui o atributo data-testid="save-button" só deve estar habilitado se todas as informações do formulário estiverem preenchidas corretamente, seguindo as seguintes regras:
-*Os campos Nome, Descrição, Imagem e Raridade  devem conter alguma informação (ou seja, os inputs não podem estar vazios).
-*A soma dos valores dos 3 atributos (attr1-input, attr2-input e attr3-input) não pode ultrapassar o valor 210.
-*Cada um dos três atributos pode ter no máximo 90 pontos cada.
-*Os atributos não podem receber valores negativos.
+> O botão que possui o atributo data-testid="save-button" só deve estar habilitado se todas as informações do formulário estiverem preenchidas corretamente, seguindo as seguintes regras:  - Os campos Nome, Descrição, Imagem e Raridade devem conter alguma informação (ou seja, os inputs não podem estar vazios).
+> - A soma dos valores dos 3 atributos (attr1-input, attr2-input e attr3-input) não pode ultrapassar o valor 210. 
+> - Cada um dos três atributos pode ter no máximo 90 pontos cada. 
+> - Os atributos não podem receber valores negativos.
 
 6. Crie a função do botão salvar
 
