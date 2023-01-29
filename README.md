@@ -60,6 +60,8 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 
 > Criar em cada carta que está sendo renderizada do seu baralho um button com o texto Excluir e o atributo data-testid="delete-button".
 
+REQUISITOS BÔNUS
+
 10. Crie o filtro pelo nome da carta
 
 > Para filtro do nome, você deverá criar um campo do tipo text e adicionar o atributo data-testid="name-filter":
