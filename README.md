@@ -23,6 +23,8 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 </p>
 </details>
 
+---
+
 **2. Adicione as props necessárias ao componente de formulário**
 
 <details><summary>Detalhes</summary>
@@ -32,6 +34,8 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 
 </p>
 </details>
+
+---
 
 **3. Crie e renderize o componente Card com as props necessárias**
 
@@ -45,6 +49,8 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 </p>
 </details>
 
+---
+
 **4. Crie o preview da carta que está sendo criada pelo formulário**
 
 <details><summary>Detalhes</summary>
@@ -56,6 +62,8 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 
 </p>
 </details>
+
+---
 
 **5. Faça a validação do botão de Salvar no formulário**
 
@@ -70,6 +78,8 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 </p>
 </details>
 
+---
+
 **6. Crie a função do botão salvar**
 
 <details><summary>Detalhes</summary>
@@ -80,6 +90,8 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 </p>
 </details>
 
+---
+
 **7. Crie a validação do Super Trunfo**
 
 <details><summary>Detalhes</summary>
@@ -89,6 +101,8 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 
 </p>
 </details>
+
+---
 
 **8. Exiba a lista de cartas que estão salvas no estado**
 
@@ -104,6 +118,8 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 </p>
 </details>
 
+---
+
 **9. Crie um botão para remover uma carta do baralho**
 
 <details><summary>Detalhes</summary>
@@ -113,6 +129,8 @@ Confira os requisitos exigidos pela Trybe (texto extraído dos readme oficial da
 
 </p>
 </details>
+
+---
 
 REQUISITOS BÔNUS
 
@@ -126,6 +144,8 @@ REQUISITOS BÔNUS
 </p>
 </details>
 
+---
+
 **11. Crie o filtro por raridade da carta**
 
 <details><summary>Detalhes</summary>
@@ -136,6 +156,8 @@ REQUISITOS BÔNUS
 </p>
 </details>
 
+---
+
 **12. Crie o filtro de Super Trunfo**
 
 <details><summary>Detalhes</summary>
@@ -145,6 +167,8 @@ REQUISITOS BÔNUS
 
 </p>
 </details>
+
+---
 
 ## Sobre o curso da Trybe
 O programa total de estudo conta com mais de 1.500 horas de aulas presenciais e online,divididas ao longo de 12 meses. O conteúdo aborda introdução ao desenvolvimento de software, front-end, back-end, ciência da computação, engenharia de software, metodologias ágeis e habilidades comportamentais.
